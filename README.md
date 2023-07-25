@@ -12,4 +12,5 @@ Does the same thing of exercise 2 , additionally it use locust library to run st
 Frontend runs on port 80 , locust page on 8089
 To run use these commands:
 > docker-compose up --build
+
 > locust -f locustfile.py
