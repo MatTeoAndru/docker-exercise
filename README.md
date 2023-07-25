@@ -9,4 +9,4 @@ The web server has two endpoint /cpu_xx /ram_xx_xx in order to do a stress test 
 
 exercise 3: Flask, Haproxy and locust
 Does the same thing of exercise 2 , additionally it use locust library to run stress test and generate a report.
-Frontend runs on port 80 , locust page 8089
+Frontend runs on port 80 , locust page on 8089
