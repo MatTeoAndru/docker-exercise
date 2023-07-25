@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  app1:
+    build:
+      context: app
+    # ports:
+    #   - "5001:5000"  # Map port  of the container to port  on the host
+    expose:
+      - 5000
+    networks:
+      - my_network
+
+  app2:
+    build:
+      context: app
+    expose:
+      - 5000
+    networks:
+      - my_network
+
+  haproxy:
+    image: haproxy:2.7
+    volumes:
+      - ./haproxy:/haproxy-override
+      - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    depends_on:
+      - app1
+      - app2
+    # links:
+    #   - app1
+    #   - app2
+    ports:
+      - "80:80"
+      - "70:70"  # haproxy admin console, login with user:pass
+    networks:
+      - my_network
+
+networks:
+  my_network:  # Create a user-defined bridge network to enable communication between services
+    driver: bridge
