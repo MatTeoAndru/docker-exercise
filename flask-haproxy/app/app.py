@@ -27,7 +27,7 @@ def consume_cpu(seconds):
 
 @app.route('/ram_<int:gb>_<int:seconds>')
 def consume_ram(gb, seconds):
-    data = [0] * (gb * 1024 * 1024 * 1024)
+    data = [0] * (gb * 1024 * 1024)
     time.sleep(seconds)
     ram_usage = psutil.virtual_memory().percent
     del data
